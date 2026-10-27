@@ -1,25 +1,31 @@
 origen,destino,distancia_km
-Comuna 1 - Centro,Comuna 2 - Calambeo,1.2
-Comuna 1 - Centro,Comuna 3 - San Simón,1.5
-Comuna 1 - Centro,Comuna 10 - Estadio,2.0
-Comuna 1 - Centro,Comuna 11 - Ferias,1.8
-Comuna 1 - Centro,Comuna 12 - Ricaurte,2.2
-Comuna 2 - Calambeo,Comuna 3 - San Simón,1.8
-Comuna 3 - San Simón,Comuna 4 - Piedrapintada,2.5
-Comuna 3 - San Simón,Comuna 5 - Jordán,2.2
-Comuna 3 - San Simón,Comuna 10 - Estadio,2.0
-Comuna 4 - Piedrapintada,Comuna 5 - Jordán,2.5
-Comuna 4 - Piedrapintada,Comuna 6 - Vergel,3.0
-Comuna 4 - Piedrapintada,Comuna 9 - Picaleña-Mirolindo,2.8
-Comuna 4 - Piedrapintada,Comuna 10 - Estadio,2.2
-Comuna 5 - Jordán,Comuna 6 - Vergel,2.5
-Comuna 5 - Jordán,Comuna 8 - Simón Bolívar,3.0
-Comuna 5 - Jordán,Comuna 9 - Picaleña-Mirolindo,3.0
-Comuna 6 - Vergel,Comuna 7 - Salado,3.0
-Comuna 6 - Vergel,Comuna 8 - Simón Bolívar,3.0
-Comuna 7 - Salado,Comuna 8 - Simón Bolívar,2.5
-Comuna 8 - Simón Bolívar,Comuna 9 - Picaleña-Mirolindo,3.0
-Comuna 9 - Picaleña-Mirolindo,Comuna 10 - Estadio,2.5
-Comuna 10 - Estadio,Comuna 11 - Ferias,1.5
-Comuna 11 - Ferias,Comuna 12 - Ricaurte,2.0
-Comuna 12 - Ricaurte,Comuna 13 - Boquerón,2.5
+Bodega - Centro,Terminal de Transportes,1.2
+Bodega - Centro,Estadio Manuel Murillo Toro,1.4
+Bodega - Centro,Centro Comercial La Estación,1.6
+Bodega - Centro,Éxito Calambeo,1.8
+Bodega - Centro,Éxito Ricaurte,2.1
+Terminal de Transportes,Estadio Manuel Murillo Toro,1.6
+Estadio Manuel Murillo Toro,Parque Murillo Toro,1.3
+Estadio Manuel Murillo Toro,Hospital Federico Lleras Acosta,1.9
+Estadio Manuel Murillo Toro,Centro Comercial La Estación,1.8
+Parque Murillo Toro,Hospital Federico Lleras Acosta,1.7
+Parque Murillo Toro,Universidad de Ibagué,2.1
+Parque Murillo Toro,Carrefour Ibagué,2.4
+Hospital Federico Lleras Acosta,Universidad del Tolima,2.2
+Hospital Federico Lleras Acosta,Universidad de Ibagué,2.3
+Universidad del Tolima,Universidad de Ibagué,1.4
+Universidad del Tolima,Mercado La 21,2.6
+Universidad de Ibagué,Mercado La 21,2.4
+Mercado La 21,Centro Comercial Multiplaza,2.1
+Centro Comercial Multiplaza,Centro Comercial La Estación,1.7
+Centro Comercial La Estación,Éxito Calambeo,1.3
+Éxito Calambeo,Éxito Ricaurte,1.7
+Éxito Ricaurte,Carrefour Ibagué,1.9
+Carrefour Ibagué,Centro Comercial Multiplaza,2.3
+Bodega - Centro,Mercado La 21,4.8
+Bodega - Centro,Universidad del Tolima,5.2
+Bodega - Centro,Carrefour Ibagué,5.6
+Bodega - Centro,Parque Murillo Toro,2.6
+Bodega - Centro,Hospital Federico Lleras Acosta,3.3
+Bodega - Centro,Universidad de Ibagué,4.6
+Bodega - Centro,Centro Comercial Multiplaza,4.2

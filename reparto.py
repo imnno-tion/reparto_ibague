@@ -61,30 +61,32 @@ class Bodega:
         return True
 
 
-def asignar_greedy(vehiculos, paquetes, mapa, deposito):
-    """GREEDY de asignación:
-    1) Zonas con mayor volumen demandado primero
-    2) Paquetes más grandes primero
-    3) Vehículo más pequeño que pueda cargarlo (peso + 3D)
-    4) Prioriza vehículos que ya entregan en esa comuna (consolidar)
-    """
+def _zona_base(ubicacion):
+    if '|' in ubicacion:
+        return ubicacion.split('|')[-1].strip()
+    return ubicacion
+
+
+def asignar_greedy(vehiculos, paquetes, mapa, deposito)
     bodegas = [Bodega(v) for v in vehiculos]
-    # Calcular demanda por comuna (volumen total)
+    # Calcular demanda por zona base
     demanda = {}
     for p in paquetes:
-        demanda[p.ubicacion] = demanda.get(p.ubicacion, 0.0) + vol_paquete(p)
+        zb = _zona_base(p.ubicacion)
+        demanda[zb] = demanda.get(zb, 0.0) + vol_paquete(p)
     sin_asignar = []
     # Procesar primero las zonas con más demanda
     for zona in sorted(demanda, key=lambda z: -demanda[z]):
         # Dentro de la zona, paquetes más grandes primero
-        for p in sorted([q for q in paquetes if q.ubicacion == zona], key=lambda q: -vol_paquete(q)):
-            if p.ubicacion not in mapa:
+        for p in sorted([q for q in paquetes if _zona_base(q.ubicacion) == zona], key=lambda q: -vol_paquete(q)):
+            if _zona_base(p.ubicacion) not in mapa and p.ubicacion not in mapa:
                 sin_asignar.append((p, "ubicación no existe en el grafo"))
                 continue
-            # Ordenar bodegas: más pequeña -> ya carga esa zona -> más espacio libre -> id
+            # Ordenar bodegas: primero las que YA tienen carga (consolidar) -> más pequeña -> misma zona base -> más espacio libre -> id
             orden = sorted(bodegas, key=lambda b: (
+                0 if len(b.puestos) > 0 else 1,  # PRIORIDAD: llenar vehículos ya usados primero
                 vol_vehiculo(b.veh),
-                0 if any(q.ubicacion == zona for q, *_ in b.puestos) else 1,
+                0 if any(_zona_base(q.ubicacion) == zona for q, *_ in b.puestos) else 1,
                 -b.libre(),
                 b.veh.id))
             for b in orden:
@@ -92,12 +94,12 @@ def asignar_greedy(vehiculos, paquetes, mapa, deposito):
                     break
             else:
                 sin_asignar.append((p, "excede el peso o no cabe en ninguna bodega"))
-    # Calcular ruta por vehículo cargado (DP si ≤15 paradas, si no greedy)
+    # Calcular ruta por vehículo cargado (agrupar por zona base para Dijkstra/DP)
     plan = []
     for b in bodegas:
         if not b.puestos:
             continue
-        zonas = sorted({q.ubicacion for q, *_ in b.puestos})
+        zonas = sorted({_zona_base(q.ubicacion) for q, *_ in b.puestos})
         ruta, km = optimizar_ruta(mapa, deposito, zonas)
         plan.append((b, ruta, km))
     plan.sort(key=lambda x: x[0].veh.id)
